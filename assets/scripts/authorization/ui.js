@@ -6,16 +6,16 @@ const onSignUpSuccess = responseData => {
   $('#signup-message').text('Successfully created an account!').show()
 }
 const onSignUpFail = () => {
-  $('#signup-message').text('There was an error with signing up. Please try again.').show()
+  $('#signup-message').text('Error with signing up. Please try again.').show()
 }
 // Sign In UI
 const onSignInSuccess = responseData => {
   store.user = responseData.user
   $('#sign-out').show()
   $('#change-password').show()
-  $('#changePassHeading').show()
-  $('#signInHeading').hide()
-  $('#signUpHeading').hide()
+  $('#change-pw-heading').show()
+  $('#sign-in-heading').hide()
+  $('#sign-up-heading').hide()
   $('#sign-in').hide()
   $('#sign-up').hide()
   $('#signup-message').hide()
@@ -36,17 +36,17 @@ const onChangePasswordFail = () => {
 const onSignOutSuccess = () => {
   store.user = null
   $('#signout-message').text('You have signed out successfully.').show()
-  $('#changePassHeading').hide()
+  $('#change-pw-heading').hide()
   $('#change-password').hide()
   $('#sign-out').hide()
-  $('#signInHeading').show()
-  $('#signUpHeading').show()
+  $('#sign-in-heading').show()
+  $('#sign-up-heading').show()
   $('#sign-in').show()
   $('#sign-up').show()
   $('#signout-message').fadeOut(1500)
 }
 const onSignOutFail = () => {
-  $('#signout-message').text('There was an error with signing out. Please try again.').show()
+  $('#signout-message').text('Error with signing out. Please try again.').show()
 }
 
 module.exports = {
