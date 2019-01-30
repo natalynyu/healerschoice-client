@@ -17,7 +17,7 @@ const signIn = (formData) => {
     data: formData
   })
 }
-const changePW = (formData) => {
+const changePassword = (formData) => {
   return $.ajax({
     url: config.apiUrl + '/change-password',
     method: 'PATCH',
@@ -39,6 +39,6 @@ const signOut = () => {
 module.exports = {
   signUp,
   signIn,
-  changePW,
+  changePassword,
   signOut
 }
