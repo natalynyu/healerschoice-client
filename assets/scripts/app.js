@@ -1,6 +1,7 @@
 'use strict'
 
 const authorizationEvents = require('./authorization/events')
+const reservationEvents = require('./reservations/events')
 // use require with a reference to bundle the file and use it in this file
 // const example = require('./example')
 
@@ -9,6 +10,7 @@ const authorizationEvents = require('./authorization/events')
 
 $(() => {
   authorizationEvents.addAuthorizationHandlers()
+  reservationEvents.addReservationHandlers()
   $('#sign-out').hide()
   $('#change-password').hide()
   $('#change-pw-heading').hide()
