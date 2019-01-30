@@ -5,23 +5,24 @@ const store = require('../store')
 
 const createReservation = (formData) => {
   return $.ajax({
-    url: config.apiUrl + '/new-reservation',
+    url: config.apiUrl + '/reservations',
     method: 'POST',
     data: formData
   })
 }
 
 // Shows the reservations of the signed in user
-const showUserReservations = () => {
+const showUserReservations = (formData) => {
   return $.ajax({
-    url: config.apiUrl + '/my-reservations',
-    method: 'GET'
+    url: config.apiUrl + '/reservations/' + formData.reservation.id,
+    method: 'GET',
+    data: formData
   })
 }
 
 const updateReservation = (formData) => {
   return $.ajax({
-    url: config.apiUrl + '/update-reservation',
+    url: config.apiUrl + '/reservations/' + formData.reservation.id,
     method: 'PATCH',
     headers: {
       Authorization: 'Token token=' + store.user.token
@@ -30,9 +31,9 @@ const updateReservation = (formData) => {
   })
 }
 
-const deleteReservation = (formData) => {
+const deleteReservation = (id) => {
   return $.ajax({
-    url: config.apiUrl + '/delete-reservation',
+    url: config.apiUrl + '/reservations/' + id,
     method: 'DELETE',
     headers: {
       Authorization: 'Token token=' + store.user.token
