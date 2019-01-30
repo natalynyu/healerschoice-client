@@ -37,14 +37,33 @@
         <input type="password" name="passwords[new]" placeholder="New Password">
         <input type="submit">
       </form>
+      <div id="password-message"></div>
+      <!-- Doctor and Department Info -->
+      <section class="doctor-info">
       <h5 id="update-doctor-info-heading">Update Doctor Info</h5>
       <form id="update-doctor-info">
         <input type="text" name="doctor[full_name]" placeholder="Full Name">
         <input type="text" name="doctor[department]" placeholder="Department">
+        <input type="submit"
       </form>
-      <div id="password-message"></div>
+    </section>
       <!-- Sign out for Signed In Users -->
       <input type="button" id="sign-out" value="Sign Out">
       <div id="signout-message"></div>
+      <!-- Reservation View & Management Section -->
+      <section class="reservation-management">
+        <h5>My Reservations</h5>
+        <!-- Will display Machine Name, Date, Start Time, and End Time -->
+        <h5>Create a New Reservation</h5>
+        <form id="create-reservation">
+          <input type="text" id="machine" name="machine" placeholder="Machine Name">
+          <input type="date">
+          <label for="startTime">Start Time</label>
+          <input type="time" name="startTime" id="startTime" required>
+          <label for="endTime">End Time</label>
+          <input type="time" name="endTime" id="endTime" required>
+          <input type="submit">
+        </form>
+      </section>
     </body>
 </html>
