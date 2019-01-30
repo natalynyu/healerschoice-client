@@ -53,17 +53,32 @@
       <!-- Reservation View & Management Section -->
       <section class="reservation-management">
         <h5>My Reservations</h5>
+        <input type="button" id="show-my-reservations" name="show-my-reservations" value="Show My Reservations">
+        <div id="show-reservations-message"></div>
         <!-- Will display Machine Name, Date, Start Time, and End Time -->
+        <!-- Form for editing reservations -->
+        <h6 id="edit-reservation-heading">Edit Reservation</h6>
+        <form id="edit-reservation">
+          <input type="text" id="updated-machine" name="updated-machine" placeholder="Machine">
+          <input type="date" name="updated-date" id="updated-date">
+          <input type="time" name="updated-start-time" id="updated-start-time">
+          <input type="time" name="updated-end-time" id="updated-end-time">
+          <input type="submit">
+        </form>
+        <input type="button" id="delete-reservation" name="delete-reservation" value="Delete Reservation">
+        <div id="update-reservation-message"></div>
+        <div id="delete-reservation-message"></div>
         <h5>Create a New Reservation</h5>
         <form id="create-reservation">
           <input type="text" id="machine" name="machine" placeholder="Machine Name">
-          <input type="date">
+          <input type="date" name="reservation-date" id="reservation-date">
           <label for="startTime">Start Time</label>
           <input type="time" name="startTime" id="startTime" required>
           <label for="endTime">End Time</label>
           <input type="time" name="endTime" id="endTime" required>
           <input type="submit">
         </form>
+        <div id="create-reservation-message"></div>
       </section>
     </body>
 </html>
