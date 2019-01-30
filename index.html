@@ -1,84 +1,82 @@
 <!DOCTYPE html>
 <html>
-    <head>
-      <title>Healer's Choice</title>
-      <meta name="viewport" content="width=device-width, initial-scale=1">
 
-      <!-- Do not add `link` tags-->
-      <link rel="shortcut icon" type="image/x-icon" href="favicon.ico">
+<head>
+  <title>Healer's Choice</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1">
 
-      <!-- Do not add `script` tags-->
-      <script src="public/vendor.js" type="text/javascript" charset="utf-8" defer></script>
-      <script src="public/application.js" type="text/javascript" charset="utf-8" defer></script>
-    </head>
-    <body>
-      <h1>Healer's Choice</h1>
-      <!-- Sign Up for New Users -->
-      <h5 id="sign-up-heading">New User Sign Up</h5>
-      <form id="sign-up">
-        <input type="text" name="credentials[email]" placeholder="Email">
-        <input type="password" name="credentials[password]" placeholder="Password">
-        <input type="password" name="credentials[password_confirmation]" placeholder="Confirm Password">
-        <input type="submit">
-      </form>
-      <h5 id="signup-message" class="message"></h5>
-      <!-- Sign In for Existing Users -->
-      <h5 id="sign-in-heading">Sign In</h5>
-      <form id="sign-in">
-        <input type="text" name="credentials[email]" placeholder="Email">
-        <input type="password" name="credentials[password]" placeholder="Password">
-        <input type="submit">
-      </form>
-      <h5 id="signin-message" class="message"></h5>
-      <!-- Change Password for Existing Users -->
-      <h5 id="change-pw-heading">Change Password</h5>
-      <form id="change-password">
-        <input type="password" name="passwords[old]" placeholder="Current Password">
-        <input type="password" name="passwords[new]" placeholder="New Password">
-        <input type="submit">
-      </form>
-      <h5 id="password-message" class="message"></h5>
-      <!-- Doctor and Department Info -->
-      <div class="doctor-info">
+  <!-- Do not add `link` tags-->
+  <link rel="shortcut icon" type="image/x-icon" href="favicon.ico">
+
+  <!-- Do not add `script` tags-->
+  <script src="public/vendor.js" type="text/javascript" charset="utf-8" defer></script>
+  <script src="public/application.js" type="text/javascript" charset="utf-8" defer></script>
+</head>
+
+<body>
+  <h1>Healer's Choice</h1>
+  <!-- Sign Up for New Users -->
+  <div class="user-management">
+    <h5 id="sign-up-heading">New User Sign Up</h5>
+    <form id="sign-up">
+      <input type="text" name="credentials[email]" placeholder="Email">
+      <input type="password" name="credentials[password]" placeholder="Password">
+      <input type="password" name="credentials[password_confirmation]" placeholder="Confirm Password">
+      <input type="submit">
+    </form>
+    <h5 id="signup-message" class="message"></h5>
+    <!-- Sign In for Existing Users -->
+    <h5 id="sign-in-heading">Sign In</h5>
+    <form id="sign-in">
+      <input type="text" name="credentials[email]" placeholder="Email">
+      <input type="password" name="credentials[password]" placeholder="Password">
+      <input type="submit">
+    </form>
+    <h5 id="signin-message" class="message"></h5>
+    <!-- Change Password for Existing Users -->
+    <h5 id="change-pw-heading">Change Password</h5>
+    <form id="change-password">
+      <input type="password" name="passwords[old]" placeholder="Current Password">
+      <input type="password" name="passwords[new]" placeholder="New Password">
+      <input type="submit">
+    </form>
+    <h5 id="password-message" class="message"></h5>
+    <!-- Doctor and Department Info -->
+    <div class="doctor-info">
       <h5 id="update-doctor-info-heading">Update Doctor Info</h5>
       <form id="update-doctor-info">
         <input type="text" name="doctor[full_name]" placeholder="Full Name">
         <input type="text" name="doctor[department]" placeholder="Department">
-        <input type="submit"
-      </form>
+        <input type="submit" </form> </div> <!-- Sign out for Signed In Users -->
+        <input type="button" id="sign-out" value="Sign Out">
+        <h5 id="signout-message" class="message"></h5>
     </div>
-      <!-- Sign out for Signed In Users -->
-      <input type="button" id="sign-out" value="Sign Out">
-      <h5 id="signout-message" class="message"></h5>
-      <!-- Reservation View & Management Section -->
-      <div class="reservation-management">
-        <h5>My Reservations</h5>
-        <input type="button" id="show-my-reservations" name="show-my-reservations" value="Show My Reservations">
-        <div id="show-reservations-message" class="message"></div>
-        <!-- Will display Machine Name, Date, Start Time, and End Time -->
-        <!-- Form for editing reservations -->
-        <h6 id="edit-reservation-heading">Edit Reservation</h6>
-        <form id="edit-reservation">
-          <input type="text" id="updated-machine" name="updated-machine" placeholder="Machine">
-          <input type="date" name="updated-date" id="updated-date">
-          <input type="time" name="updated-start-time" id="updated-start-time">
-          <input type="time" name="updated-end-time" id="updated-end-time">
-          <input type="submit">
-        </form>
-        <input type="button" id="delete-reservation" name="delete-reservation" value="Delete Reservation">
-        <h5 id="update-reservation-message" class="message"></h5>
-        <h5 id="delete-reservation-message" class="message"></h5>
-        <h5>Create a New Reservation</h5>
-        <form id="create-reservation">
-          <input type="text" id="machine" name="machine" placeholder="Machine Name">
-          <input type="date" name="reservation-date" id="reservation-date">
-          <label for="startTime">Start Time</label>
-          <input type="time" name="startTime" id="startTime" required>
-          <label for="endTime">End Time</label>
-          <input type="time" name="endTime" id="endTime" required>
-          <input type="submit">
-        </form>
-        <h5 id="create-reservation-message" class="message"></h5>
-      </div>
-    </body>
+    <!-- Reservation View & Management Section -->
+    <div class="reservation-management">
+      <h5>My Reservations</h5>
+      <input type="button" id="show-my-reservations" name="show-my-reservations" value="Show My Reservations">
+      <div id="show-reservations-message" class="message"></div>
+      <!-- Will display Machine Name, Date, Start Time, and End Time -->
+      <!-- Form for editing reservations -->
+      <h6 id="edit-reservation-heading">Edit Reservation</h6>
+      <form id="edit-reservation">
+        <input type="text" id="updated-machine" name="updated-machine" placeholder="Machine">
+        <input type="datetime-local" name="updated-start-date-time" id="updated-start-date-time">
+        <input type="datetime-local" name="updated-end-date-time" id="updated-end-date-time">
+        <input type="submit">
+      </form>
+      <input type="button" id="delete-reservation" name="delete-reservation" value="Delete Reservation">
+      <h5 id="update-reservation-message" class="message"></h5>
+      <h5 id="delete-reservation-message" class="message"></h5>
+      <h5>Create a New Reservation</h5>
+      <form id="create-reservation">
+        <input type="text" id="machine" name="machine" placeholder="Machine Name">
+        <input type="datetime-local" name="start-date-time" id="start-date-time">
+        <input type="datetime-local" name="end-date-time" id="end-date-time">
+        <input type="submit">
+      </form>
+      <h5 id="create-reservation-message" class="message"></h5>
+    </div>
+</body>
+
 </html>
