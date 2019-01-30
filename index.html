@@ -21,7 +21,7 @@
         <input type="password" name="credentials[password_confirmation]" placeholder="Confirm Password">
         <input type="submit">
       </form>
-      <div id="signup-message"></div>
+      <h5 id="signup-message" class="message"></h5>
       <!-- Sign In for Existing Users -->
       <h5 id="sign-in-heading">Sign In</h5>
       <form id="sign-in">
@@ -29,7 +29,7 @@
         <input type="password" name="credentials[password]" placeholder="Password">
         <input type="submit">
       </form>
-      <div id="signin-message"></div>
+      <h5 id="signin-message" class="message"></h5>
       <!-- Change Password for Existing Users -->
       <h5 id="change-pw-heading">Change Password</h5>
       <form id="change-password">
@@ -37,24 +37,24 @@
         <input type="password" name="passwords[new]" placeholder="New Password">
         <input type="submit">
       </form>
-      <div id="password-message"></div>
+      <h5 id="password-message" class="message"></h5>
       <!-- Doctor and Department Info -->
-      <section class="doctor-info">
+      <div class="doctor-info">
       <h5 id="update-doctor-info-heading">Update Doctor Info</h5>
       <form id="update-doctor-info">
         <input type="text" name="doctor[full_name]" placeholder="Full Name">
         <input type="text" name="doctor[department]" placeholder="Department">
         <input type="submit"
       </form>
-    </section>
+    </div>
       <!-- Sign out for Signed In Users -->
       <input type="button" id="sign-out" value="Sign Out">
-      <div id="signout-message"></div>
+      <h5 id="signout-message" class="message"></h5>
       <!-- Reservation View & Management Section -->
-      <section class="reservation-management">
+      <div class="reservation-management">
         <h5>My Reservations</h5>
         <input type="button" id="show-my-reservations" name="show-my-reservations" value="Show My Reservations">
-        <div id="show-reservations-message"></div>
+        <div id="show-reservations-message" class="message"></div>
         <!-- Will display Machine Name, Date, Start Time, and End Time -->
         <!-- Form for editing reservations -->
         <h6 id="edit-reservation-heading">Edit Reservation</h6>
@@ -66,8 +66,8 @@
           <input type="submit">
         </form>
         <input type="button" id="delete-reservation" name="delete-reservation" value="Delete Reservation">
-        <div id="update-reservation-message"></div>
-        <div id="delete-reservation-message"></div>
+        <h5 id="update-reservation-message" class="message"></h5>
+        <h5 id="delete-reservation-message" class="message"></h5>
         <h5>Create a New Reservation</h5>
         <form id="create-reservation">
           <input type="text" id="machine" name="machine" placeholder="Machine Name">
@@ -78,7 +78,7 @@
           <input type="time" name="endTime" id="endTime" required>
           <input type="submit">
         </form>
-        <div id="create-reservation-message"></div>
-      </section>
+        <h5 id="create-reservation-message" class="message"></h5>
+      </div>
     </body>
 </html>
