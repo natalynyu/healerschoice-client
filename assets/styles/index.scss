@@ -1,0 +1,44 @@
+@import '~bootstrap/scss/bootstrap';
+
+@font-face {
+  font-family: 'Carrois_Gothic_SC';
+  src: url('public/fonts/Carrois_Gothic_SC/CarroisGothicSC-Regular.ttf') format('truetype');
+}
+
+@font-face {
+  font-family: 'Notable';
+  src: url('public/fonts/Notable/Notable-Regular.ttf') format('truetype');
+}
+
+$background-color: #ff0;
+$font-color: #000;
+$white: #fff;
+$black: #000;
+$light-yellow: #ecfe76;
+
+body {
+  margin: 20px;
+}
+h1 {
+  font-family: 'Notable';
+}
+
+h5, h6, label, input {
+  font-family: 'Carrois_Gothic_SC';
+}
+
+.message {
+  position: absolute;
+  top: 10px;
+  right: 10px;
+  display: inline-block;
+  background-color: $light-yellow;
+}
+
+.reservation-management {
+  margin-top: 20px;
+}
+
+.user-management {
+  margin-top: 20px;
+}
