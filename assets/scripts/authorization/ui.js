@@ -4,7 +4,7 @@ const store = require('../store')
 const doctorApi = require('../doctors/api')
 // Sign Up UI
 const onSignUpSuccess = responseData => {
-  $('#signup-message').text('Successfully created an account!').show()
+  $('#signup-message').text('Successfully created an account!').show().fadeOut(4000)
 }
 const onSignUpFail = () => {
   $('#signup-message').text('Error with signing up. Please try again.').show()
@@ -21,7 +21,7 @@ const onSignInSuccess = responseData => {
   $('#sign-up').hide()
   $('#signup-message').hide()
   $('#signout-message').hide()
-  $('#signin-message').text('You have successfully signed in.').show().fadeOut(2000)
+  $('#signin-message').text('You have successfully signed in.').show().fadeOut(3000)
   doctorApi.getDoctorInfo()
     .then(responseData => {
       if (responseData == null) {
@@ -39,7 +39,7 @@ const onSignInFail = () => {
 }
 // Password Update UI
 const onChangePasswordSuccess = () => {
-  $('#password-message').text('Password was updated successfully.').show().fadeOut(2000)
+  $('#password-message').text('Password was updated successfully.').show().fadeOut(3000)
 }
 const onChangePasswordFail = () => {
   $('#password-message').text('Error with changing your password. Please try again.').show()
