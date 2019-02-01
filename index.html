@@ -19,37 +19,38 @@
   <div class="user-management">
     <h5 id="sign-up-heading">New User Sign Up</h5>
     <form id="sign-up">
-      <input type="text" name="credentials[email]" placeholder="Email">
-      <input type="password" name="credentials[password]" placeholder="Password">
-      <input type="password" name="credentials[password_confirmation]" placeholder="Confirm Password">
+      <input type="text" name="credentials[email]" placeholder="Email" required>
+      <input type="password" name="credentials[password]" placeholder="Password" required>
+      <input type="password" name="credentials[password_confirmation]" placeholder="Confirm Password" required>
       <input type="submit">
     </form>
     <h5 id="signup-message" class="message"></h5>
     <!-- Sign In for Existing Users -->
     <h5 id="sign-in-heading">Sign In</h5>
     <form id="sign-in">
-      <input type="text" name="credentials[email]" placeholder="Email">
-      <input type="password" name="credentials[password]" placeholder="Password">
+      <input type="text" name="credentials[email]" placeholder="Email" required>
+      <input type="password" name="credentials[password]" placeholder="Password" required>
       <input type="submit">
     </form>
     <h5 id="signin-message" class="message"></h5>
     <!-- Change Password for Existing Users -->
     <h5 id="change-pw-heading">Change Password</h5>
     <form id="change-password">
-      <input type="password" name="passwords[old]" placeholder="Current Password">
-      <input type="password" name="passwords[new]" placeholder="New Password">
+      <input type="password" name="passwords[old]" placeholder="Current Password" required>
+      <input type="password" name="passwords[new]" placeholder="New Password" required>
       <input type="submit">
     </form>
     <h5 id="password-message" class="message"></h5>
     <!-- Doctor and Department Info -->
     <div class="doctor-info">
-      <h5 id="update-doctor-info-heading">Update Doctor Info</h5>
-      <form id="update-doctor-info">
-        <input type="text" name="doctor[full_name]" placeholder="Full Name">
-        <input type="text" name="doctor[department]" placeholder="Department">
+      <h5 id="create-doctor-info-heading">Doctor Info</h5>
+      <form id="create-doctor-info">
+        <input type="text" name="doctor[full_name]" placeholder="Full Name" required>
+        <input type="text" name="doctor[department]" placeholder="Department" required>
         <input type="submit">
       </form>
       </div>
+      <h5 id="doctor-info-message" class="message"></h5>
       <!-- Sign out for Signed In Users -->
       <input type="button" id="sign-out" value="Sign Out">
       <h5 id="signout-message" class="message"></h5>
@@ -63,22 +64,25 @@
       <!-- Form for editing reservations -->
       <h6 id="edit-reservation-heading">Edit Reservation</h6>
       <form id="edit-reservation">
-        <input type="text" id="updated-machine" name="updated-machine" placeholder="Machine">
-        <input type="datetime-local" name="updated-start-date-time" id="updated-start-date-time">
-        <input type="datetime-local" name="updated-end-date-time" id="updated-end-date-time">
+        <input type="hidden" name="reservation[id]" value="">
+        <input type="text" name="reservation[machine]" placeholder="Machine">
+        <input type="datetime-local" name="reservation[start_time]">
+        <input type="datetime-local" name="reservation[end_time]">
         <input type="submit">
       </form>
-      <input type="button" id="delete-reservation" name="delete-reservation" value="Delete Reservation">
+      <input type="button" name="delete-reservation" value="Delete Reservation">
       <h5 id="update-reservation-message" class="message"></h5>
       <h5 id="delete-reservation-message" class="message"></h5>
       <h5>Create a New Reservation</h5>
       <form id="create-reservation">
-        <input type="text" id="machine" name="machine" placeholder="Machine Name">
-        <input type="datetime-local" name="start-date-time" id="start-date-time">
-        <input type="datetime-local" name="end-date-time" id="end-date-time">
+        <input type="hidden" name="reservation[doctor_id]" id="doctorID" value="">
+        <input type="text" id="machine" name="reservation[machine]" placeholder="Machine Name">
+        <input type="datetime-local" name="reservation[start_time]">
+        <input type="datetime-local" name="reservation[end_time]">
         <input type="submit">
       </form>
       <h5 id="create-reservation-message" class="message"></h5>
+      <h5 id="newly-created-reservation"></h5>
     </div>
 </body>
 
