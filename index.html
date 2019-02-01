@@ -16,13 +16,13 @@
 <body>
   <h1>Healer's Choice</h1>
   <!-- Sign Up for New Users -->
-  <div class="user-management">
+  <div class="user-management container-fluid">
     <h5 id="sign-up-heading">New User Sign Up</h5>
     <form id="sign-up">
       <input type="text" name="credentials[email]" placeholder="Email" required>
       <input type="password" name="credentials[password]" placeholder="Password" required>
       <input type="password" name="credentials[password_confirmation]" placeholder="Confirm Password" required>
-      <input type="submit">
+      <input class="btn btn-outline-primary" type="submit">
     </form>
     <h5 id="signup-message" class="message"></h5>
     <!-- Sign In for Existing Users -->
@@ -30,7 +30,7 @@
     <form id="sign-in">
       <input type="text" name="credentials[email]" placeholder="Email" required>
       <input type="password" name="credentials[password]" placeholder="Password" required>
-      <input type="submit">
+      <input class="btn btn-outline-primary" type="submit">
     </form>
     <h5 id="signin-message" class="message"></h5>
     <!-- Change Password for Existing Users -->
@@ -38,7 +38,7 @@
     <form id="change-password">
       <input type="password" name="passwords[old]" placeholder="Current Password" required>
       <input type="password" name="passwords[new]" placeholder="New Password" required>
-      <input type="submit">
+      <input class="btn btn-outline-primary" type="submit">
     </form>
     <h5 id="password-message" class="message"></h5>
     <!-- Doctor and Department Info -->
@@ -47,30 +47,25 @@
       <form id="create-doctor-info">
         <input type="text" name="doctor[full_name]" placeholder="Full Name" required>
         <input type="text" name="doctor[department]" placeholder="Department" required>
-        <input type="submit">
+        <input class="btn btn-outline-primary" type="submit">
       </form>
       </div>
       <h5 id="doctor-info-message" class="message"></h5>
       <!-- Sign out for Signed In Users -->
-      <input type="button" id="sign-out" value="Sign Out">
+      <input type="button" id="sign-out" class="btn btn-outline-primary" value="Sign Out">
       <h5 id="signout-message" class="message"></h5>
     </div>
     <!-- Reservation View & Management Section -->
     <div class="reservation-management">
       <h5>My Reservations</h5>
-      <input type="button" id="show-my-reservations" name="show-my-reservations" value="Show My Reservations">
+      <input type="button" id="show-my-reservations" class="btn btn-outline-primary" name="show-my-reservations" value="Show My Reservations">
       <h5 id="show-reservations-message" class="message"></h5>
-      <!-- Will display Machine Name, Date, Start Time, and End Time -->
+      <table class="user-reservations">
+      </table>
       <!-- Form for editing reservations -->
       <h6 id="edit-reservation-heading">Edit Reservation</h6>
-      <form id="edit-reservation">
-        <input type="hidden" name="reservation[id]" value="">
-        <input type="text" name="reservation[machine]" placeholder="Machine">
-        <input type="datetime-local" name="reservation[start_time]">
-        <input type="datetime-local" name="reservation[end_time]">
-        <input type="submit">
-      </form>
-      <input type="button" name="delete-reservation" value="Delete Reservation">
+      <div id="edit-form">
+      </div>
       <h5 id="update-reservation-message" class="message"></h5>
       <h5 id="delete-reservation-message" class="message"></h5>
       <h5>Create a New Reservation</h5>
@@ -78,8 +73,9 @@
         <input type="hidden" name="reservation[doctor_id]" id="doctorID" value="">
         <input type="text" id="machine" name="reservation[machine]" placeholder="Machine Name">
         <input type="datetime-local" name="reservation[start_time]">
+        <span>-</span>
         <input type="datetime-local" name="reservation[end_time]">
-        <input type="submit">
+        <input class="btn btn-outline-primary" type="submit">
       </form>
       <h5 id="create-reservation-message" class="message"></h5>
       <h5 id="newly-created-reservation"></h5>
