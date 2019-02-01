@@ -16,11 +16,13 @@ const createReservation = (formData) => {
 }
 
 // Shows the reservations of the signed in user
-const showUserReservations = (formData) => {
+const showUserReservations = () => {
   return $.ajax({
     url: config.apiUrl + '/reservations',
     method: 'GET',
-    data: formData
+    headers: {
+      Authorization: 'Token token=' + store.user.token
+    }
   })
 }
 
