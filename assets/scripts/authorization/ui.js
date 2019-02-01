@@ -1,6 +1,7 @@
 'use strict'
 
 const store = require('../store')
+const doctorApi = require('../doctors/api')
 // Sign Up UI
 const onSignUpSuccess = responseData => {
   $('#signup-message').text('Successfully created an account!').show()
@@ -21,6 +22,17 @@ const onSignInSuccess = responseData => {
   $('#signup-message').hide()
   $('#signout-message').hide()
   $('#signin-message').text('You have successfully signed in.').show().fadeOut(2000)
+  doctorApi.getDoctorInfo()
+    .then(responseData => {
+      if (responseData == null) {
+        $('#doctor-info-message').text('Please provide your information before making a reservation.').show()
+        return
+      }
+      store.doctor = responseData.doctor
+    })
+    .catch(error => {
+      $('#doctor-info-message').text('Error obtaining doctor info: ' + error.message)
+    })
 }
 const onSignInFail = () => {
   $('#signin-message').text(`Please check your login credentials.`).show()
