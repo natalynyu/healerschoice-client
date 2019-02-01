@@ -16,4 +16,6 @@ $(() => {
   $('#sign-out').hide()
   $('#change-password').hide()
   $('#change-pw-heading').hide()
+  $('#edit-reservation').hide()
+  $('#edit-reservation-heading').hide()
 })
