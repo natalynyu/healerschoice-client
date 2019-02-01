@@ -60,7 +60,7 @@ const onUpdateReservationFail = () => {
 const onDeleteReservationSuccess = () => {
   $('.user-reservations').hide()
   api.showUserReservations()
-  $('#delete-reservation-message').text('Successfully deleted reservation.').show().fadeOut(6000)
+  $('#delete-reservation-message').text('Successfully deleted reservation.').show().fadeOut(5000)
 }
 
 const onDeleteReservationFail = () => {
