@@ -3,18 +3,20 @@
 const getFormFields = require('../../../lib/get-form-fields')
 const api = require('./api.js')
 const ui = require('./ui.js')
+const store = require('../store')
 
-const onUpdateDoctorInfo = event => {
+const onCreateDoctorInfo = event => {
   event.preventDefault()
   const formData = getFormFields(event.target)
-  api.getDoctorInfo()
-    .then(ui.onUpdateDoctorInfoSuccess)
-    .catch(ui.onUpdateDoctorInfoFail)
+  formData.doctor.user_id = store.user.id
+  api.createDoctorInfo(formData)
+    .then(ui.onCreateDoctorInfoSuccess)
+    .catch(ui.onCreateDoctorInfoFail)
   $('form').trigger('reset')
 }
 
 const addDoctorHandlers = () => {
-  $('#update-doctor-info').on('submit', onUpdateDoctorInfo)
+  $('#create-doctor-info').on('submit', onCreateDoctorInfo)
 }
 module.exports = {
   addDoctorHandlers
