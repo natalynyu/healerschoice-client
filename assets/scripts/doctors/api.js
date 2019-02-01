@@ -3,17 +3,19 @@
 const config = require('../config')
 const store = require('../store')
 
-const getDoctorInfo = () => {
+const createDoctorInfo = (formData) => {
   return $.ajax({
-    url: config.apiUrl + '/get-doctor-info',
-    method: 'GET'
+    url: config.apiUrl + '/doctors',
+    method: 'POST',
+    data: formData
   })
 }
 
-const createDoctorInfo = () => {
+const getDoctorInfo = () => {
   return $.ajax({
-    url: config.apiUrl + '/doctors',
-    method: 'POST'
+    url: config.apiUrl + '/get-doctor-info',
+    method: 'GET',
+    data: {user_id: store.user.id}
   })
 }
 
