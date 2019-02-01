@@ -26,9 +26,9 @@ const showUserReservations = () => {
   })
 }
 
-const updateReservation = (formData) => {
+const updateReservation = (id, formData) => {
   return $.ajax({
-    url: config.apiUrl + '/reservations/' + formData.reservation.id,
+    url: config.apiUrl + '/reservations/' + id,
     method: 'PATCH',
     headers: {
       Authorization: 'Token token=' + store.user.token
