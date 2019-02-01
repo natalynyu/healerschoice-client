@@ -19,20 +19,24 @@ $light-yellow: #ecfe76;
 body {
   margin: 20px;
 }
+
 h1 {
   font-family: 'Notable';
 }
 
-h5, h6, label, input {
+h5,
+h6,
+label,
+input {
   font-family: 'Carrois_Gothic_SC';
 }
 
 .message {
-  position: absolute;
-  top: 10px;
-  right: 10px;
-  display: inline-block;
   background-color: $light-yellow;
+  display: inline-block;
+  position: absolute;
+  right: 10px;
+  top: 10px;
 }
 
 .reservation-management {
@@ -41,4 +45,13 @@ h5, h6, label, input {
 
 .user-management {
   margin-top: 20px;
+}
+
+.user-reservations {
+  border: 1px solid $black;
+}
+
+td,
+th {
+  border: 1px solid $black;
 }

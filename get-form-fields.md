@@ -15,7 +15,7 @@ First, your `<input>`s will need to be wrapped in a `<form>`, like this:
 <form id="create-book">
   <input name="book[title]" type="text">
   <input name="book[author]" type="text">
-  <button type="submit">Create Book</button>
+  <button class="btn btn-outline-primary" type="submit">Create Book</button>
 </form>
 ```
 Then, in your Javascript, you'd do something like this:
