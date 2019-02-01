@@ -1,10 +1,14 @@
 'use strict'
 
-const store = require('../store')
+// const editformTemp = require('../templates/edit-form.handlebars')
+const api = require('./api.js')
 
 // Create User UI
 const onCreateReservationSuccess = responseData => {
-  $('#create-reservation-message').text('Successfully created reservation!').show()
+  $('#create-reservation-message').text('Successfully created reservation!').show().fadeOut(4000)
+  $('#edit-reservation-heading').hide()
+  $('#edit-reservation').hide()
+  $('.user-reservations').hide()
   const machine = responseData.reservation.machine
   const startTime = responseData.reservation.start_time
   const endTime = responseData.reservation.end_time
@@ -17,8 +21,24 @@ const onCreateReservationFail = () => {
   $('#create-reservation-message').text('Error with creating reservation. Please try again.').show()
 }
 
+const escapeForHtml = (text) => {
+  return $('<div>').text(text).html()
+}
+
 const onShowUserReservationsSuccess = responseData => {
-  store.reservation = responseData.reservation
+  $('.user-reservations').text('')
+  $('#newly-created-reservation').text('')
+  $('.user-reservations').append('<tr><th>Machine</th><th>Start Time</th><th>End Time</th></tr>')
+  responseData.reservations.forEach(reservation => {
+    $('.user-reservations').append(`<tr>
+      <td>${escapeForHtml(reservation.machine)}</td>
+      <td>${reservation.start_time}</td>
+      <td>${reservation.end_time}</td>
+      <td><input type="button" class="edit-reservation-button btn btn-outline-primary" value="Edit" data-id="${reservation.id}"></td>
+      <td><input type="button" class="delete-reservation-button btn btn-outline-primary" value="Delete" data-id="${reservation.id}"></td>
+    </tr>`)
+  })
+  $('.user-reservations').show()
 }
 
 const onShowUserReservationsFail = () => {
@@ -26,7 +46,11 @@ const onShowUserReservationsFail = () => {
 }
 
 const onUpdateReservationSuccess = () => {
-  $('#update-reservation-message').text('Successfully updated reservation!').show()
+  $('.user-reservations').hide()
+  $('#edit-reservation-heading').hide()
+  $('#edit-reservation').hide()
+  api.showUserReservations()
+  $('#update-reservation-message').text('Successfully updated reservation!').show().fadeOut(3000)
 }
 
 const onUpdateReservationFail = () => {
@@ -34,7 +58,9 @@ const onUpdateReservationFail = () => {
 }
 
 const onDeleteReservationSuccess = () => {
-  $('#delete-reservation-message').text('Successfully deleted reservation.').show()
+  $('.user-reservations').hide()
+  api.showUserReservations()
+  $('#delete-reservation-message').text('Successfully deleted reservation.').show().fadeOut(6000)
 }
 
 const onDeleteReservationFail = () => {
