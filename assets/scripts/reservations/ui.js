@@ -5,6 +5,12 @@ const store = require('../store')
 // Create User UI
 const onCreateReservationSuccess = responseData => {
   $('#create-reservation-message').text('Successfully created reservation!').show()
+  const machine = responseData.reservation.machine
+  const startTime = responseData.reservation.start_time
+  const endTime = responseData.reservation.end_time
+  const doctorFullName = responseData.reservation.doctor.full_name
+  const doctorDept = responseData.reservation.doctor.department
+  $('#newly-created-reservation').text('Reservation of ' + machine + ' for ' + doctorFullName + ' (Dept: ' + doctorDept + ') on ' + startTime + ' - ' + endTime + ' was successfully created!')
 }
 
 const onCreateReservationFail = () => {
@@ -20,19 +26,19 @@ const onShowUserReservationsFail = () => {
 }
 
 const onUpdateReservationSuccess = () => {
-  $('update-reservation-message').text('Successfully updated reservation!').show()
+  $('#update-reservation-message').text('Successfully updated reservation!').show()
 }
 
 const onUpdateReservationFail = () => {
-  $('update-reservation-message').text('Error with updating reservation. Please try again.').show()
+  $('#update-reservation-message').text('Error with updating reservation. Please try again.').show()
 }
 
 const onDeleteReservationSuccess = () => {
-  $('delete-reservation-message').text('Successfully deleted reservation.').show()
+  $('#delete-reservation-message').text('Successfully deleted reservation.').show()
 }
 
 const onDeleteReservationFail = () => {
-  $('delete-reservation-message').text('Error with deleting reservation. Please try again.').show()
+  $('#delete-reservation-message').text('Error with deleting reservation. Please try again.').show()
 }
 
 module.exports = {
