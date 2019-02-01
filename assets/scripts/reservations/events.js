@@ -3,6 +3,7 @@
 const getFormFields = require('../../../lib/get-form-fields')
 const api = require('./api.js')
 const ui = require('./ui.js')
+const editformTemp = require('../templates/edit-form.handlebars')
 
 const onCreateReservation = event => {
   event.preventDefault()
@@ -20,10 +21,19 @@ const onShowUserReservations = event => {
     .catch(ui.onShowUserReservationsFail)
 }
 
+const showReservationUpdateForm = event => {
+  $('.user-reservations').hide()
+  $('#edit-reservation-heading').show()
+  const id = event.target.dataset.id
+  const updateReservationTable = editformTemp({data: id})
+  $('#edit-form').html(updateReservationTable)
+}
+
 const onUpdateReservation = event => {
   event.preventDefault()
   const formData = getFormFields(event.target)
-  api.updateReservation(formData)
+  const id = event.target.dataset.reservationid
+  api.updateReservation(id, formData)
     .then(ui.onUpdateReservationSuccess)
     .catch(ui.onUpdateReservationFail)
   $('form').trigger('reset')
@@ -31,7 +41,8 @@ const onUpdateReservation = event => {
 
 const onDeleteReservation = event => {
   event.preventDefault()
-  api.deleteReservation()
+  const id = event.target.dataset.id
+  api.deleteReservation(id)
     .then(ui.onDeleteReservationSuccess)
     .catch(ui.onDeleteReservationFail)
 }
@@ -39,8 +50,9 @@ const onDeleteReservation = event => {
 const addReservationHandlers = () => {
   $('#create-reservation').on('submit', onCreateReservation)
   $('#show-my-reservations').on('click', onShowUserReservations)
-  $('#edit-reservation').on('submit', onUpdateReservation)
-  $('#delete-reservation').on('click', onDeleteReservation)
+  $('.user-reservations').on('click', '.edit-reservation-button', showReservationUpdateForm)
+  $('body').on('submit', '#edit-reservation', onUpdateReservation)
+  $('.user-reservations').on('click', '.delete-reservation-button', onDeleteReservation)
 }
 
 module.exports = {

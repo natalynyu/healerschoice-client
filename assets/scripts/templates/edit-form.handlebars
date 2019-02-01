@@ -1,0 +1,9 @@
+<form id="edit-reservation" data-reservationid="{{data}}">
+  {{log data}}
+  <input type="hidden" name="reservation[id]" value="">
+  <input type="text" name="reservation[machine]" placeholder="Machine">
+  <input type="datetime-local" name="reservation[start_time]">
+  <span>-</span>
+  <input type="datetime-local" name="reservation[end_time]">
+  <input class="btn btn-outline-primary" type="submit">
+</form>
