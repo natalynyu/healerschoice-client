@@ -18,4 +18,7 @@ $(() => {
   $('#change-pw-heading').hide()
   $('#edit-reservation').hide()
   $('#edit-reservation-heading').hide()
+  $('#create-doctor-info-heading').hide()
+  $('#create-doctor-info').hide()
+  $('.reservation-management').hide()
 })
