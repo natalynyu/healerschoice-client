@@ -23,7 +23,7 @@ const onShowUserReservations = event => {
 const onUpdateReservation = event => {
   event.preventDefault()
   const formData = getFormFields(event.target)
-  api.updateReservation()
+  api.updateReservation(formData)
     .then(ui.onUpdateReservationSuccess)
     .catch(ui.onUpdateReservationFail)
   $('form').trigger('reset')
@@ -35,6 +35,7 @@ const onDeleteReservation = event => {
     .then(ui.onDeleteReservationSuccess)
     .catch(ui.onDeleteReservationFail)
 }
+
 const addReservationHandlers = () => {
   $('#create-reservation').on('submit', onCreateReservation)
   $('#show-my-reservations').on('click', onShowUserReservations)
