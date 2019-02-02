@@ -17,21 +17,27 @@ const onSignInSuccess = responseData => {
   $('#change-pw-heading').show()
   $('#create-doctor-info-heading').show()
   $('#create-doctor-info').show()
-  $('.reservation-management').show()
   $('#sign-in-heading').hide()
   $('#sign-up-heading').hide()
   $('#sign-in').hide()
   $('#sign-up').hide()
   $('#signup-message').hide()
   $('#signout-message').hide()
-  $('#signin-message').text('You have successfully signed in.').show().fadeOut(3000)
+  $('#signin-message').text('You have successfully signed in.').show().fadeOut(4000)
   doctorApi.getDoctorInfo()
     .then(responseData => {
+      console.log(responseData)
       if (responseData == null) {
         $('#doctor-info-message').text('Please provide your information before making a reservation.').show()
         return
       }
       store.doctor = responseData.doctor
+      $('.reservation-management').show()
+      $('#show-my-reservations').show()
+      $('#create-doctor-info-heading').hide()
+      $('#create-doctor-info').hide()
+      $('#welcome-user-back-message').text(`Welcome back, ${store.doctor.full_name}!`).show()
+      $('#update-existing-doctor-info').show()
     })
     .catch(error => {
       $('#doctor-info-message').text('Error obtaining doctor info: ' + error.message)
@@ -63,6 +69,7 @@ const onSignOutSuccess = () => {
   $('#sign-in').show()
   $('#sign-up').show()
   $('#signout-message').fadeOut(1500)
+  $('#welcome-user-back-message').text('')
 }
 const onSignOutFail = () => {
   $('#signout-message').text('Error with signing out. Please try again.').show()
