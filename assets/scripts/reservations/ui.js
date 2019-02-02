@@ -10,11 +10,11 @@ const onCreateReservationSuccess = responseData => {
   $('#edit-reservation').hide()
   $('.user-reservations').hide()
   const machine = responseData.reservation.machine
-  const startTime = responseData.reservation.start_time
-  const endTime = responseData.reservation.end_time
+  const startTime = new Date(responseData.reservation.start_time).toLocaleString()
+  const endTime = new Date(responseData.reservation.end_time).toLocaleString()
   const doctorFullName = responseData.reservation.doctor.full_name
   const doctorDept = responseData.reservation.doctor.department
-  $('#newly-created-reservation').text('Reservation of ' + machine + ' for ' + doctorFullName + ' (Dept: ' + doctorDept + ') on ' + startTime + ' - ' + endTime + ' was successfully created!')
+  $('#new-reservation-message').text('Reservation of ' + machine + ' for ' + doctorFullName + ' (Dept: ' + doctorDept + ') on ' + startTime + ' - ' + endTime + ' was successfully created!')
 }
 
 const onCreateReservationFail = () => {
@@ -28,14 +28,14 @@ const escapeForHtml = (text) => {
 const onShowUserReservationsSuccess = responseData => {
   $('#show-my-reservations').hide()
   $('.user-reservations').text('')
-  $('#newly-created-reservation').text('')
+  $('#new-reservation-message').text('')
   if (responseData.reservations.length > 0) {
     $('.user-reservations').append('<tr><th>Machine</th><th>Start Time</th><th>End Time</th></tr>')
     responseData.reservations.forEach(reservation => {
       $('.user-reservations').append(`<tr>
         <td>${escapeForHtml(reservation.machine)}</td>
-        <td>${reservation.start_time}</td>
-        <td>${reservation.end_time}</td>
+        <td>${new Date(reservation.start_time).toLocaleString()}</td>
+        <td>${new Date(reservation.end_time).toLocaleString()}</td>
         <td><input type="button" class="edit-reservation-button btn btn-outline-primary" value="Edit" data-id="${reservation.id}"></td>
         <td><input type="button" class="delete-reservation-button btn btn-outline-primary" value="Delete" data-id="${reservation.id}"></td>
       </tr>`)
@@ -55,6 +55,7 @@ const onUpdateReservationSuccess = () => {
   $('.user-reservations').hide()
   $('#edit-reservation-heading').hide()
   $('#edit-reservation').hide()
+  $('#cancel-edit-button').hide()
   api.showUserReservations()
   $('#update-reservation-message').text('Successfully updated reservation!').show().fadeOut(3000)
 }
