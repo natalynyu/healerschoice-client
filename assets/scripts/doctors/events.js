@@ -15,8 +15,16 @@ const onCreateDoctorInfo = event => {
   $('form').trigger('reset')
 }
 
+const onUpdateExistingDoctorInfo = event => {
+  event.preventDefault()
+  $('#create-doctor-info-heading').show()
+  $('#create-doctor-info').show()
+  $('#update-existing-doctor-info').hide()
+}
+
 const addDoctorHandlers = () => {
   $('#create-doctor-info').on('submit', onCreateDoctorInfo)
+  $('#update-existing-doctor-info').on('click', onUpdateExistingDoctorInfo)
 }
 module.exports = {
   addDoctorHandlers
