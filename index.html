@@ -19,7 +19,7 @@
   <div class="user-management container-fluid">
     <h5 id="sign-up-heading">New User Sign Up</h5>
     <form id="sign-up">
-      <input type="text" name="credentials[email]" placeholder="Email" required>
+      <input type="email" name="credentials[email]" placeholder="Email" required>
       <input type="password" name="credentials[password]" placeholder="Password" required>
       <input type="password" name="credentials[password_confirmation]" placeholder="Confirm Password" required>
       <input class="btn btn-outline-primary" type="submit">
@@ -28,11 +28,12 @@
     <!-- Sign In for Existing Users -->
     <h5 id="sign-in-heading">Sign In</h5>
     <form id="sign-in">
-      <input type="text" name="credentials[email]" placeholder="Email" required>
+      <input type="email" name="credentials[email]" placeholder="Email" required>
       <input type="password" name="credentials[password]" placeholder="Password" required>
       <input class="btn btn-outline-primary" type="submit">
     </form>
     <h5 id="signin-message" class="message"></h5>
+    <h5 id="welcome-user-back-message" class="welcome-back-message"></h5>
     <!-- Change Password for Existing Users -->
     <h5 id="change-pw-heading">Change Password</h5>
     <form id="change-password">
