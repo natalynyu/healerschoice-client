@@ -7,6 +7,7 @@ const editformTemp = require('../templates/edit-form.handlebars')
 
 const onCreateReservation = event => {
   event.preventDefault()
+  $('#show-my-reservations').show()
   const formData = getFormFields(event.target)
   api.createReservation(formData)
     .then(ui.onCreateReservationSuccess)
@@ -23,6 +24,7 @@ const onShowUserReservations = event => {
 
 const showReservationUpdateForm = event => {
   $('.user-reservations').hide()
+  $('#show-my-reservations').show()
   $('#edit-reservation-heading').show()
   const id = event.target.dataset.id
   const updateReservationTable = editformTemp({data: id})
@@ -41,6 +43,7 @@ const onUpdateReservation = event => {
 
 const onDeleteReservation = event => {
   event.preventDefault()
+  $('#show-my-reservations').show()
   const id = event.target.dataset.id
   api.deleteReservation(id)
     .then(ui.onDeleteReservationSuccess)
