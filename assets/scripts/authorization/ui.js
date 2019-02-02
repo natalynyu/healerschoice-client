@@ -32,7 +32,6 @@ const onSignInSuccess = responseData => {
   $('#signin-message').text('You have successfully signed in.').show().fadeOut(4000)
   doctorApi.getDoctorInfo()
     .then(responseData => {
-      console.log(responseData)
       if (responseData == null) {
         $('#doctor-info-message').text('Please provide your information before making a reservation.').show()
         return
@@ -70,12 +69,13 @@ const onSignOutSuccess = () => {
   $('#create-doctor-info').hide()
   $('.reservation-management').hide()
   $('.user-reservations').hide()
+  $('#welcome-user-back-message').text('')
+  $('#new-reservation-message').text('')
   $('#sign-in-heading').show()
   $('#sign-up-heading').show()
   $('#sign-in').show()
   $('#sign-up').show()
   $('#signout-message').fadeOut(1500)
-  $('#welcome-user-back-message').text('')
 }
 const onSignOutFail = () => {
   $('#signout-message').text('Error with signing out. Please try again.').show()
