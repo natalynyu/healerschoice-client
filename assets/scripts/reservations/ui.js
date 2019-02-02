@@ -26,19 +26,25 @@ const escapeForHtml = (text) => {
 }
 
 const onShowUserReservationsSuccess = responseData => {
+  $('#show-my-reservations').hide()
   $('.user-reservations').text('')
   $('#newly-created-reservation').text('')
-  $('.user-reservations').append('<tr><th>Machine</th><th>Start Time</th><th>End Time</th></tr>')
-  responseData.reservations.forEach(reservation => {
-    $('.user-reservations').append(`<tr>
-      <td>${escapeForHtml(reservation.machine)}</td>
-      <td>${reservation.start_time}</td>
-      <td>${reservation.end_time}</td>
-      <td><input type="button" class="edit-reservation-button btn btn-outline-primary" value="Edit" data-id="${reservation.id}"></td>
-      <td><input type="button" class="delete-reservation-button btn btn-outline-primary" value="Delete" data-id="${reservation.id}"></td>
-    </tr>`)
-  })
-  $('.user-reservations').show()
+  if (responseData.reservations.length > 0) {
+    $('.user-reservations').append('<tr><th>Machine</th><th>Start Time</th><th>End Time</th></tr>')
+    responseData.reservations.forEach(reservation => {
+      $('.user-reservations').append(`<tr>
+        <td>${escapeForHtml(reservation.machine)}</td>
+        <td>${reservation.start_time}</td>
+        <td>${reservation.end_time}</td>
+        <td><input type="button" class="edit-reservation-button btn btn-outline-primary" value="Edit" data-id="${reservation.id}"></td>
+        <td><input type="button" class="delete-reservation-button btn btn-outline-primary" value="Delete" data-id="${reservation.id}"></td>
+      </tr>`)
+    })
+    $('.user-reservations').show()
+  } else {
+    $('#no-reservations-indicator').text('You have no reservations yet.').show().fadeOut(2000)
+    $('#show-my-reservations').show()
+  }
 }
 
 const onShowUserReservationsFail = () => {
