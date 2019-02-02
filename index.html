@@ -50,37 +50,39 @@
         <input type="text" name="doctor[department]" placeholder="Department" required>
         <input class="btn btn-outline-primary" type="submit">
       </form>
-      </div>
-      <h5 id="doctor-info-message" class="message"></h5>
-      <!-- Sign out for Signed In Users -->
-      <input type="button" id="sign-out" class="btn btn-outline-primary" value="Sign Out">
-      <h5 id="signout-message" class="message"></h5>
     </div>
-    <!-- Reservation View & Management Section -->
-    <div class="reservation-management">
-      <h5>My Reservations</h5>
-      <input type="button" id="show-my-reservations" class="btn btn-outline-primary" name="show-my-reservations" value="Show My Reservations">
-      <h5 id="show-reservations-message" class="message"></h5>
-      <table class="user-reservations">
-      </table>
-      <!-- Form for editing reservations -->
-      <h6 id="edit-reservation-heading">Edit Reservation</h6>
-      <div id="edit-form">
-      </div>
-      <h5 id="update-reservation-message" class="message"></h5>
-      <h5 id="delete-reservation-message" class="message"></h5>
-      <h5>Create a New Reservation</h5>
-      <form id="create-reservation">
-        <input type="hidden" name="reservation[doctor_id]" id="doctorID" value="">
-        <input type="text" id="machine" name="reservation[machine]" placeholder="Machine Name">
-        <input type="datetime-local" name="reservation[start_time]">
-        <span>-</span>
-        <input type="datetime-local" name="reservation[end_time]">
-        <input class="btn btn-outline-primary" type="submit">
-      </form>
-      <h5 id="create-reservation-message" class="message"></h5>
-      <h5 id="newly-created-reservation"></h5>
+    <h5 id="doctor-info-message" class="message"></h5>
+    <input type="button" id="update-existing-doctor-info" class="btn btn-outline-primary" value="Update Profile">
+    <!-- Sign out for Signed In Users -->
+    <input type="button" id="sign-out" class="btn btn-outline-primary" value="Sign Out">
+    <h5 id="signout-message" class="message"></h5>
+  </div>
+  <!-- Reservation View & Management Section -->
+  <div class="reservation-management">
+    <h5>My Reservations</h5>
+    <h5 id="show-reservations-message" class="message"></h5>
+    <input type="button" id="show-my-reservations" class="btn btn-outline-primary" name="show-my-reservations" value="Show My Reservations">
+    <span id="no-reservations-indicator"></span>
+    <table class="user-reservations">
+    </table>
+    <!-- Form for editing reservations -->
+    <h6 id="edit-reservation-heading">Edit Reservation</h6>
+    <div id="edit-form">
     </div>
+    <h5 id="update-reservation-message" class="message"></h5>
+    <h5 id="delete-reservation-message" class="message"></h5>
+    <h5>Create a New Reservation</h5>
+    <form id="create-reservation">
+      <input type="hidden" name="reservation[doctor_id]" id="doctorID" value="">
+      <input type="text" id="machine" name="reservation[machine]" placeholder="Machine Name">
+      <input type="datetime-local" name="reservation[start_time]">
+      <span>-</span>
+      <input type="datetime-local" name="reservation[end_time]">
+      <input class="btn btn-outline-primary" type="submit">
+    </form>
+    <h5 id="create-reservation-message" class="message"></h5>
+    <h5 id="newly-created-reservation"></h5>
+  </div>
 </body>
 
 </html>
