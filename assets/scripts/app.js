@@ -21,4 +21,5 @@ $(() => {
   $('#create-doctor-info-heading').hide()
   $('#create-doctor-info').hide()
   $('.reservation-management').hide()
+  $('#update-existing-doctor-info').hide()
 })
