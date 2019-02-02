@@ -6,8 +6,14 @@ const doctorApi = require('../doctors/api')
 const onSignUpSuccess = responseData => {
   $('#signup-message').text('Successfully created an account!').show().fadeOut(4000)
 }
-const onSignUpFail = () => {
-  $('#signup-message').text('Error with signing up. Please try again.').show()
+const onSignUpFail = (request) => {
+  const responseText = request.responseText
+  const response = JSON.parse(responseText)
+  let message = ''
+  for (const key in response) {
+    message += `${key.replace(/_/g, ' ')} ${response[key]}`
+  }
+  $('#signup-message').text('There was a problem signing up: ' + message + '. Please try again.').show()
 }
 // Sign In UI
 const onSignInSuccess = responseData => {
