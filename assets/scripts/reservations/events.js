@@ -11,10 +11,16 @@ const onCreateReservation = event => {
   const formData = getFormFields(event.target)
   const now = new Date().getTime()
   if (formData.reservation.start_time >= formData.reservation.end_time) {
-    $('#new-reservation-message').text('End time must be later than start time. Please try again.').show()
+    $('#new-reservation-message').text(`End time must be later than start time. You requested a reservation for the
+      ${formData.reservation.machine} between ${new Date(formData.reservation.start_time).toLocaleString()} and
+      ${new Date(formData.reservation.end_time).toLocaleString()}. Please try again.`).show()
+    $('form').trigger('reset')
     return
   } else if (new Date(formData.reservation.start_time).getTime() < now || new Date(formData.reservation.end_time).getTime() < now) {
-    $('#new-reservation-message').text('Reservation cannot be in the past. Please try again.').show()
+    $('#new-reservation-message').text(`Reservation cannot be in the past. You requested a reservation for the
+      ${formData.reservation.machine} between ${new Date(formData.reservation.start_time).toLocaleString()} and
+      ${new Date(formData.reservation.end_time).toLocaleString()}. Please try again.`).show()
+    $('form').trigger('reset')
     return
   }
   api.createReservation(formData)
