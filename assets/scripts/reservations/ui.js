@@ -14,7 +14,7 @@ const onCreateReservationSuccess = responseData => {
   const endTime = new Date(responseData.reservation.end_time).toLocaleString()
   const doctorFullName = responseData.reservation.doctor.full_name
   const doctorDept = responseData.reservation.doctor.department
-  $('#new-reservation-message').text('Reservation of ' + machine + ' for ' + doctorFullName + ' (Dept: ' + doctorDept + ') on ' + startTime + ' - ' + endTime + ' was successfully created!')
+  $('#new-reservation-message').text('Reservation of ' + machine + ' for ' + doctorFullName + ' (Department: ' + doctorDept + ') from ' + startTime + ' to ' + endTime + ' was successfully created!')
 }
 
 const onCreateReservationFail = () => {
