@@ -69,6 +69,7 @@ const onSignOutSuccess = () => {
   $('#create-doctor-info').hide()
   $('.reservation-management').hide()
   $('.user-reservations').hide()
+  $('#update-existing-doctor-info').hide()
   $('#welcome-user-back-message').text('')
   $('#new-reservation-message').text('')
   $('#sign-in-heading').show()
