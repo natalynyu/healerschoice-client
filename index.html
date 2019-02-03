@@ -74,9 +74,18 @@
     <h5>Create a New Reservation</h5>
     <form id="create-reservation">
       <input type="hidden" name="reservation[doctor_id]" id="doctorID" value="">
-      <input type="text" id="machine" name="reservation[machine]" placeholder="Machine Name">
+      <select id="machine" name="reservation[machine]">
+        <option value="machine" disabled selected>Machine Name</option>
+        <option value="CT Scanner">CT Scanner</option>
+        <option value="X-Ray Machine">X-Ray Machine</option>
+        <option value="MRI Machine">MRI Machine</option>
+        <option value="PET Scanner">PET Scanner</option>
+        <option value="Ultrasound Machine">Ultrasound Machine</option>
+        <option value="LASIK Surgical Machine">LASIK Surgical Machine</option>
+      </select>
+      <span>From: </span>
       <input type="datetime-local" name="reservation[start_time]">
-      <span>-</span>
+      <span>To: </span>
       <input type="datetime-local" name="reservation[end_time]">
       <input class="btn btn-outline-primary" type="submit">
     </form>
