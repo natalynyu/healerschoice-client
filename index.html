@@ -63,6 +63,7 @@
     <h5>My Reservations</h5>
     <h5 id="show-reservations-message" class="message"></h5>
     <input type="button" id="show-my-reservations" class="btn btn-outline-primary" name="show-my-reservations" value="Show My Reservations">
+    <input type="button" id="hide-my-reservations" class="btn btn-outline-primary" name="hide-my-reservations" value="Hide My Reservations" style="display: none">
     <span id="no-reservations-indicator"></span>
     <table class="user-reservations">
     </table>
@@ -76,7 +77,7 @@
     <form id="create-reservation">
       <input type="hidden" name="reservation[doctor_id]" id="doctorID" value="">
       <select id="machine" name="reservation[machine]">
-        <option value="machine" disabled selected>Machine Name</option>
+        <option value="" disabled selected>Machine Name</option>
         <option value="CT Scanner">CT Scanner</option>
         <option value="X-Ray Machine">X-Ray Machine</option>
         <option value="MRI Machine">MRI Machine</option>
