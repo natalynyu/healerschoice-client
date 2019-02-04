@@ -7,7 +7,7 @@ const editformTemp = require('../templates/edit-form.handlebars')
 
 const onCreateReservation = event => {
   event.preventDefault()
-  $('#show-my-reservations').show()
+  onHideUserReservations()
   const formData = getFormFields(event.target)
   const now = new Date().getTime()
   if (formData.reservation.start_time >= formData.reservation.end_time) {
@@ -42,14 +42,29 @@ const onShowUserReservations = event => {
     .catch(ui.onShowUserReservationsFail)
 }
 
+const serverTimeToDateTimeLocal = time => {
+  // The datetime-local expects this format: 2019-02-04T10:30:00.000
+  return String(time).replace(/z$/i, '')
+}
+
 const showReservationUpdateForm = event => {
-  $('.user-reservations').hide()
-  $('#show-my-reservations').show()
+  // $('.user-reservations').hide()
   $('#edit-reservation-heading').show()
   $('#cancel-edit-button').show()
   const id = event.target.dataset.id
-  const updateReservationTable = editformTemp({data: id})
-  $('#edit-form').html(updateReservationTable).show()
+  const machine = event.target.dataset.machine
+  const startTime = event.target.dataset.start_time
+  const endTime = event.target.dataset.end_time
+  const updateReservationTable = editformTemp({
+    id: id,
+    machine: machine,
+    start_time: serverTimeToDateTimeLocal(startTime),
+    end_time: serverTimeToDateTimeLocal(endTime)
+  })
+  // Can't set the value through HTML, so must set it here afterward
+  $('#edit-form').html(updateReservationTable)
+    .show()
+    .find('#machine').val(machine)
 }
 
 const onUpdateReservation = event => {
@@ -57,7 +72,7 @@ const onUpdateReservation = event => {
   const formData = getFormFields(event.target)
   const id = event.target.dataset.reservationid
   api.updateReservation(id, formData)
-    .then(ui.onUpdateReservationSuccess)
+    .then(ui.onUpdateReservationSuccess.bind(null, id, formData))
     .catch(ui.onUpdateReservationFail)
   $('form').trigger('reset')
 }
@@ -70,16 +85,22 @@ const hideEditSection = event => {
 
 const onDeleteReservation = event => {
   event.preventDefault()
-  $('#show-my-reservations').show()
   const id = event.target.dataset.id
   api.deleteReservation(id)
     .then(ui.onDeleteReservationSuccess.bind(null, id))
     .catch(ui.onDeleteReservationFail)
 }
 
+const onHideUserReservations = event => {
+  $('.user-reservations').hide()
+  $('#show-my-reservations').show()
+  $('#hide-my-reservations').hide()
+}
+
 const addReservationHandlers = () => {
   $('#create-reservation').on('submit', onCreateReservation)
   $('#show-my-reservations').on('click', onShowUserReservations)
+  $('#hide-my-reservations').on('click', onHideUserReservations)
   $('.user-reservations').on('click', '.edit-reservation-button', showReservationUpdateForm)
   $('body').on('click', '#cancel-edit-button', hideEditSection)
   $('body').on('submit', '#edit-reservation', onUpdateReservation)
