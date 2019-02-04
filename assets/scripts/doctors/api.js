@@ -25,15 +25,17 @@ const getDoctorInfo = () => {
   })
 }
 
-const updateDoctorInfo = () => {
+const updateDoctorInfo = (formData) => {
   return $.ajax({
     url: config.apiUrl + '/update-doctor-info',
     headers: {
       Authorization: 'Token token=' + store.user.token
     },
+    data: formData,
     method: 'PATCH'
   })
 }
+
 module.exports = {
   getDoctorInfo,
   createDoctorInfo,
