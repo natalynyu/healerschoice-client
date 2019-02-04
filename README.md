@@ -11,7 +11,6 @@ The purpose of this application is to allow medical professionals working in hos
 Technologies Used: HTML, CSS, JavaScript, jQuery, AJAX, Bootstrap, Handlebars
 
 Unsolved Problems for Future Iterations:
-* Creating a dropdown for machines instead of letting users type in the machine name
 * Prevent users from making reservations 1 year in advance
 * Improve styling using Bootstrap
 
