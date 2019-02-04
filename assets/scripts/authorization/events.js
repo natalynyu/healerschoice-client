@@ -38,11 +38,19 @@ const onSignOut = event => {
     .catch(ui.onSignOutFail)
 }
 
+const onClickChangePassword = event => {
+  event.preventDefault()
+  $('#change-password').show()
+  $('#change-pw-heading').show()
+  $('#change-password-button').hide()
+}
+
 const addAuthorizationHandlers = () => {
   $('#sign-up').on('submit', onSignUp)
   $('#sign-in').on('submit', onSignIn)
   $('#change-password').on('submit', onChangePassword)
   $('#sign-out').on('click', onSignOut)
+  $('#change-password-button').on('click', onClickChangePassword)
 }
 
 module.exports = {
