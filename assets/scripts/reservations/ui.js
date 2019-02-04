@@ -20,7 +20,7 @@ const onCreateReservationSuccess = responseData => {
 }
 
 const onCreateReservationFail = (request) => {
-  $('#create-reservation-message').text('Error with creating reservation: ' + parseServerError(request) + '. Please try again.').show()
+  $('#create-reservation-message').text('Error with creating reservation: ' + parseServerError(request) + '. Please try again.').show().fadeOut(10000)
 }
 
 const escapeForHtml = (text) => {
