@@ -40,7 +40,7 @@ const onSignInSuccess = responseData => {
       $('#update-existing-doctor-info').show()
     })
     .catch(error => {
-      $('#doctor-info-message').text('Error obtaining doctor info: ' + error.message)
+      $('#doctor-info-message').text('Error obtaining doctor info: ' + parseServerError(error) + '. Please try again.').show()
     })
 }
 const onSignInFail = () => {
