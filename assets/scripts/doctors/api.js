@@ -34,7 +34,6 @@ const updateDoctorInfo = () => {
     method: 'PATCH'
   })
 }
-
 module.exports = {
   getDoctorInfo,
   createDoctorInfo,

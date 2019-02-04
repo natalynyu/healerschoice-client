@@ -17,12 +17,9 @@ const onCreateDoctorInfo = event => {
 
 const onUpdateExistingDoctorInfo = event => {
   event.preventDefault()
-  const formData = getFormFields(event.target)
-  formData.doctor.user_id = store.user.id
-  api.updateDoctorInfo(formData)
-    .then(ui.onUpdateDoctorInfoSuccess)
-    .catch(ui.onUpdateDoctorInfoFail)
-  $('form').trigger('reset')
+  $('#create-doctor-info-heading').show()
+  $('#create-doctor-info').show()
+  $('#update-existing-doctor-info').hide()
 }
 
 const addDoctorHandlers = () => {

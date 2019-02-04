@@ -23,16 +23,12 @@ const onCreateDoctorInfoFail = () => {
 
 const onUpdateDoctorInfoSuccess = responseData => {
   $('#doctor-info-message').text('Successfully updated info.').show()
-  $('#create-doctor-info-heading').show()
-  $('#create-doctor-info').show()
-  $('#update-existing-doctor-info').hide()
   store.doctor = responseData.doctor
 }
 
 const onUpdateDoctorInfoFail = () => {
   $('#doctor-info-message').text('Error with updating info. Please try again.').show()
 }
-
 module.exports = {
   onCreateDoctorInfoSuccess,
   onCreateDoctorInfoFail,
