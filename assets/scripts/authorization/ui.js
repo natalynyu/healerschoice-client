@@ -2,18 +2,14 @@
 
 const store = require('../store')
 const doctorApi = require('../doctors/api')
+const parseServerError = require('../parseServerError')
+
 // Sign Up UI
 const onSignUpSuccess = responseData => {
   $('#signup-message').text('Successfully created an account!').show().fadeOut(4000)
 }
 const onSignUpFail = (request) => {
-  const responseText = request.responseText
-  const response = JSON.parse(responseText)
-  let message = ''
-  for (const key in response) {
-    message += `${key.replace(/_/g, ' ')} ${response[key]}`
-  }
-  $('#signup-message').text('There was a problem signing up: ' + message + '. Please try again.').show()
+  $('#signup-message').text('There was a problem signing up: ' + parseServerError(request) + '. Please try again.').show()
 }
 // Sign In UI
 const onSignInSuccess = responseData => {
