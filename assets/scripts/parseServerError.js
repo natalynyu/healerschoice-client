@@ -8,7 +8,7 @@ const parseServerError = request => {
   try {
     response = JSON.parse(responseText)
   } catch (e) {
-    return request.responseText
+    return request.responseText || request.message
   }
   const messages = []
   for (const key in response) {
