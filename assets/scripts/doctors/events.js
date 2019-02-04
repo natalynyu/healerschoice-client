@@ -9,10 +9,17 @@ const onCreateDoctorInfo = event => {
   event.preventDefault()
   const formData = getFormFields(event.target)
   formData.doctor.user_id = store.user.id
-  api.createDoctorInfo(formData)
-    .then(ui.onCreateDoctorInfoSuccess)
-    .catch(ui.onCreateDoctorInfoFail)
-  $('form').trigger('reset')
+  if (store.doctor) {
+    api.updateDoctorInfo(formData)
+      .then(ui.onUpdateDoctorInfoSuccess)
+      .catch(ui.onUpdateDoctorInfoFail)
+    $('form').trigger('reset')
+  } else {
+    api.createDoctorInfo(formData)
+      .then(ui.onCreateDoctorInfoSuccess)
+      .catch(ui.onCreateDoctorInfoFail)
+    $('form').trigger('reset')
+  }
 }
 
 const onUpdateExistingDoctorInfo = event => {
