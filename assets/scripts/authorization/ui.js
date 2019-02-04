@@ -19,8 +19,7 @@ const onSignUpFail = (request) => {
 const onSignInSuccess = responseData => {
   store.user = responseData.user
   $('#sign-out').show()
-  $('#change-password').show()
-  $('#change-pw-heading').show()
+  $('#change-password-button').show()
   $('#create-doctor-info-heading').show()
   $('#create-doctor-info').show()
   $('#sign-in-heading').hide()
@@ -53,6 +52,9 @@ const onSignInFail = () => {
 }
 // Password Update UI
 const onChangePasswordSuccess = () => {
+  $('#change-password').hide()
+  $('#change-pw-heading').hide()
+  $('#change-password-button').show()
   $('#password-message').text('Password was updated successfully.').show().fadeOut(3000)
 }
 const onChangePasswordFail = () => {
@@ -70,6 +72,7 @@ const onSignOutSuccess = () => {
   $('.reservation-management').hide()
   $('.user-reservations').hide()
   $('#update-existing-doctor-info').hide()
+  $('#change-password-button').hide()
   $('#welcome-user-back-message').text('')
   $('#new-reservation-message').text('')
   $('#sign-in-heading').show()
