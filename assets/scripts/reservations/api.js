@@ -3,8 +3,14 @@
 const config = require('../config')
 const store = require('../store')
 
+const userTimeToServer = time => {
+  return new Date(String(time)).toISOString()
+}
+
 const createReservation = (formData) => {
   formData.reservation.doctor_id = store.doctor.id
+  formData.start_time = userTimeToServer(formData.reservation.start_time)
+  formData.end_time = userTimeToServer(formData.reservation.end_time)
   return $.ajax({
     url: config.apiUrl + '/reservations',
     method: 'POST',
@@ -27,6 +33,8 @@ const showUserReservations = () => {
 }
 
 const updateReservation = (id, formData) => {
+  formData.start_time = userTimeToServer(formData.reservation.start_time)
+  formData.end_time = userTimeToServer(formData.reservation.end_time)
   return $.ajax({
     url: config.apiUrl + '/reservations/' + id,
     method: 'PATCH',
