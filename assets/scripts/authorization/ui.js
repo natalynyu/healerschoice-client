@@ -37,7 +37,7 @@ const onSignInSuccess = responseData => {
       toggleReservations(false)
       $('#create-doctor-info-heading').hide()
       $('#create-doctor-info').hide()
-      $('#welcome-user-back-message').text(`Welcome back, ${store.doctor.full_name}!`).show()
+      $('#welcome-user-back-message').text(`Welcome back, ${store.doctor.full_name}!`).show().fadeOut(15000)
       $('#update-existing-doctor-info').show()
     })
     .catch(error => {
