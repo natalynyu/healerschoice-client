@@ -1,12 +1,8 @@
 'use strict'
 
 // const editformTemp = require('../templates/edit-form.handlebars')
+const formatServerTime = require('../formatServerTime')
 const parseServerError = require('../parseServerError')
-
-const formatServerTime = time => {
-  // The "Z" at the end causes it to be timezone-shifted by the Date constructor
-  return new Date(String(time).replace(/z$/i, '')).toLocaleString()
-}
 
 // Create User UI
 const onCreateReservationSuccess = responseData => {
@@ -30,7 +26,21 @@ const escapeForHtml = (text) => {
   return $('<div>').text(text).html()
 }
 
+const makeReservationRowHtml = reservation => {
+  return `<td>${escapeForHtml(reservation.machine)}</td>
+  <td>${formatServerTime(reservation.start_time)}</td>
+  <td>${formatServerTime(reservation.end_time)}</td>
+  <td><input type="button" class="edit-reservation-button btn btn-outline-primary" value="Edit"
+    data-id="${reservation.id}"
+    data-machine="${escapeForHtml(reservation.machine)}"
+    data-start_time="${reservation.start_time}"
+    data-end_time="${reservation.end_time}"></td>
+  <td><input type="button" class="delete-reservation-button btn btn-outline-primary" value="Delete"
+    data-id="${reservation.id}"></td>`
+}
+
 const onShowUserReservationsSuccess = responseData => {
+  $('#hide-my-reservations').show()
   $('#show-my-reservations').hide()
   $('.user-reservations').text('')
   $('#new-reservation-message').text('')
@@ -38,11 +48,7 @@ const onShowUserReservationsSuccess = responseData => {
     $('.user-reservations').append('<tr><th>Machine</th><th>Start Time</th><th>End Time</th></tr>')
     responseData.reservations.forEach(reservation => {
       $('.user-reservations').append(`<tr data-id="${reservation.id}">
-        <td>${escapeForHtml(reservation.machine)}</td>
-        <td>${formatServerTime(reservation.start_time)}</td>
-        <td>${formatServerTime(reservation.end_time)}</td>
-        <td><input type="button" class="edit-reservation-button btn btn-outline-primary" value="Edit" data-id="${reservation.id}"></td>
-        <td><input type="button" class="delete-reservation-button btn btn-outline-primary" value="Delete" data-id="${reservation.id}"></td>
+        ${makeReservationRowHtml(reservation)}
       </tr>`)
     })
     $('.user-reservations').show()
@@ -56,16 +62,21 @@ const onShowUserReservationsFail = () => {
   $('#show-reservations-message').text('Error with showing reservations. Please try again').show()
 }
 
-const onUpdateReservationSuccess = () => {
-  $('.user-reservations').hide()
+const onUpdateReservationSuccess = (id, formData) => {
   $('#edit-reservation-heading').hide()
   $('#edit-reservation').hide()
   $('#cancel-edit-button').hide()
   $('#update-reservation-message').text('Successfully updated reservation!').show().fadeOut(3000)
+  $(`.user-reservations tr[data-id=${id}]`).html(makeReservationRowHtml({
+    id: id,
+    machine: formData.reservation.machine,
+    start_time: formData.reservation.start_time,
+    end_time: formData.reservation.end_time
+  }))
 }
 
-const onUpdateReservationFail = () => {
-  $('#update-reservation-message').text('Error with updating reservation. Please try again.').show()
+const onUpdateReservationFail = request => {
+  $('#update-reservation-message').text('Error with updating reservation: ' + parseServerError(request) + '. Please try again.').show()
 }
 
 const onDeleteReservationSuccess = (id) => {
