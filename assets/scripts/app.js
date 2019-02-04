@@ -23,4 +23,5 @@ $(() => {
   $('.reservation-management').hide()
   $('#update-existing-doctor-info').hide()
   $('#cancel-edit-button').hide()
+  $('#change-password-button').hide()
 })
