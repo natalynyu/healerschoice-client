@@ -52,6 +52,7 @@
       </form>
     </div>
     <h5 id="doctor-info-message" class="message"></h5>
+        <input type="button" id="change-password-button" class="btn btn-outline-primary" value="Update Password">
     <input type="button" id="update-existing-doctor-info" class="btn btn-outline-primary" value="Update Profile">
     <!-- Sign out for Signed In Users -->
     <input type="button" id="sign-out" class="btn btn-outline-primary" value="Sign Out">
@@ -71,7 +72,7 @@
     </div>
     <h5 id="update-reservation-message" class="message"></h5>
     <h5 id="delete-reservation-message" class="message"></h5>
-    <h5>Create a New Reservation</h5>
+    <h5 class="create-new-reservation">Create a New Reservation</h5>
     <form id="create-reservation">
       <input type="hidden" name="reservation[doctor_id]" id="doctorID" value="">
       <select id="machine" name="reservation[machine]">
