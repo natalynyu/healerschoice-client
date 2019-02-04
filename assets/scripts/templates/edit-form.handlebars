@@ -1,6 +1,6 @@
 <form id="edit-reservation" data-reservationid="{{id}}">
   <!-- <input type="hidden" name="reservation[id]" value=""> -->
-  <select id="machine" name="reservation[machine]">
+  <select id="machine" name="reservation[machine]" autocomplete="off">
     <option value="" selected disabled>Machine Name</option>
     <option value="CT Scanner">CT Scanner</option>
     <option value="X-Ray Machine">X-Ray Machine</option>
@@ -9,9 +9,9 @@
     <option value="Ultrasound Machine">Ultrasound Machine</option>
     <option value="LASIK Surgical Machine">LASIK Surgical Machine</option>
   </select>
-  <input type="datetime-local" name="reservation[start_time]" value={{start_time}}>
+  <input type="datetime-local" name="reservation[start_time]" value={{start_time}} autocomplete="off">
   <span>-</span>
-  <input type="datetime-local" name="reservation[end_time]" value={{end_time}}>
+  <input type="datetime-local" name="reservation[end_time]" value={{end_time}} autocomplete="off">
   <input class="btn btn-outline-primary" type="submit">
   <input type="button" id="cancel-edit-button" class="btn btn-outline-primary" value="Cancel">
 </form>

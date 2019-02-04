@@ -19,17 +19,18 @@
   <div class="user-management container-fluid">
     <h5 id="sign-up-heading">New User Sign Up</h5>
     <form id="sign-up">
-      <input type="email" name="credentials[email]" placeholder="Email" required>
-      <input type="password" name="credentials[password]" placeholder="Password" required>
-      <input type="password" name="credentials[password_confirmation]" placeholder="Confirm Password" required>
+      <!-- Added autocomplete="off" to prevent Chrome from complaining about -->
+      <input type="email" name="credentials[email]" placeholder="Email" required autocomplete="off">
+      <input type="password" name="credentials[password]" placeholder="Password" required autocomplete="off">
+      <input type="password" name="credentials[password_confirmation]" placeholder="Confirm Password" required autocomplete="off">
       <input class="btn btn-outline-primary" type="submit">
     </form>
     <h5 id="signup-message" class="message"></h5>
     <!-- Sign In for Existing Users -->
     <h5 id="sign-in-heading">Sign In</h5>
     <form id="sign-in">
-      <input type="email" name="credentials[email]" placeholder="Email" required>
-      <input type="password" name="credentials[password]" placeholder="Password" required>
+      <input type="email" name="credentials[email]" placeholder="Email" required autocomplete="off">
+      <input type="password" name="credentials[password]" placeholder="Password" required autocomplete="off">
       <input class="btn btn-outline-primary" type="submit">
     </form>
     <h5 id="signin-message" class="message"></h5>
@@ -37,8 +38,8 @@
     <!-- Change Password for Existing Users -->
     <h5 id="change-pw-heading">Change Password</h5>
     <form id="change-password">
-      <input type="password" name="passwords[old]" placeholder="Current Password" required>
-      <input type="password" name="passwords[new]" placeholder="New Password" required>
+      <input type="password" name="passwords[old]" placeholder="Current Password" required autocomplete="off">
+      <input type="password" name="passwords[new]" placeholder="New Password" required autocomplete="off">
       <input class="btn btn-outline-primary" type="submit">
     </form>
     <h5 id="password-message" class="message"></h5>
@@ -46,8 +47,8 @@
     <div class="doctor-info">
       <h5 id="create-doctor-info-heading">Doctor Info</h5>
       <form id="create-doctor-info">
-        <input type="text" name="doctor[full_name]" placeholder="Full Name" required>
-        <input type="text" name="doctor[department]" placeholder="Department" required>
+        <input type="text" name="doctor[full_name]" placeholder="Full Name" required autocomplete="off">
+        <input type="text" name="doctor[department]" placeholder="Department" required autocomplete="off">
         <input class="btn btn-outline-primary" type="submit">
       </form>
     </div>
@@ -75,8 +76,8 @@
     <h5 id="delete-reservation-message" class="message"></h5>
     <h5 class="create-new-reservation">Create a New Reservation</h5>
     <form id="create-reservation">
-      <input type="hidden" name="reservation[doctor_id]" id="doctorID" value="">
-      <select id="machine" name="reservation[machine]">
+      <input type="hidden" name="reservation[doctor_id]" id="doctorID" value="" autocomplete="off">
+      <select id="machine" name="reservation[machine]" autocomplete="off">
         <option value="" disabled selected>Machine Name</option>
         <option value="CT Scanner">CT Scanner</option>
         <option value="X-Ray Machine">X-Ray Machine</option>
@@ -86,9 +87,9 @@
         <option value="LASIK Surgical Machine">LASIK Surgical Machine</option>
       </select>
       <span>From: </span>
-      <input type="datetime-local" name="reservation[start_time]">
+      <input type="datetime-local" name="reservation[start_time]" autocomplete="off">
       <span>To: </span>
-      <input type="datetime-local" name="reservation[end_time]">
+      <input type="datetime-local" name="reservation[end_time]" autocomplete="off">
       <input class="btn btn-outline-primary" type="submit">
     </form>
     <h5 id="create-reservation-message" class="message"></h5>
