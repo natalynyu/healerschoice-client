@@ -4,10 +4,11 @@ const getFormFields = require('../../../lib/get-form-fields')
 const api = require('./api.js')
 const ui = require('./ui.js')
 const editformTemp = require('../templates/edit-form.handlebars')
+const toggleReservations = require('../toggleReservations')
 
 const onCreateReservation = event => {
   event.preventDefault()
-  onHideUserReservations()
+  toggleReservations(false)
   const formData = getFormFields(event.target)
   const now = new Date().getTime()
   if (formData.reservation.start_time >= formData.reservation.end_time) {
@@ -91,16 +92,10 @@ const onDeleteReservation = event => {
     .catch(ui.onDeleteReservationFail)
 }
 
-const onHideUserReservations = event => {
-  $('.user-reservations').hide()
-  $('#show-my-reservations').show()
-  $('#hide-my-reservations').hide()
-}
-
 const addReservationHandlers = () => {
   $('#create-reservation').on('submit', onCreateReservation)
   $('#show-my-reservations').on('click', onShowUserReservations)
-  $('#hide-my-reservations').on('click', onHideUserReservations)
+  $('#hide-my-reservations').on('click', toggleReservations.bind(null, false))
   $('.user-reservations').on('click', '.edit-reservation-button', showReservationUpdateForm)
   $('body').on('click', '#cancel-edit-button', hideEditSection)
   $('body').on('submit', '#edit-reservation', onUpdateReservation)

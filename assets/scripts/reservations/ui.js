@@ -3,6 +3,7 @@
 // const editformTemp = require('../templates/edit-form.handlebars')
 const formatServerTime = require('../formatServerTime')
 const parseServerError = require('../parseServerError')
+const toggleReservations = require('../toggleReservations')
 
 // Create User UI
 const onCreateReservationSuccess = responseData => {
@@ -40,9 +41,8 @@ const makeReservationRowHtml = reservation => {
 }
 
 const onShowUserReservationsSuccess = responseData => {
-  $('#hide-my-reservations').show()
-  $('#show-my-reservations').hide()
   $('.user-reservations').text('')
+  toggleReservations(true)
   $('#new-reservation-message').text('')
   if (responseData.reservations.length > 0) {
     $('.user-reservations').append('<tr><th>Machine</th><th>Start Time</th><th>End Time</th></tr>')
@@ -54,7 +54,7 @@ const onShowUserReservationsSuccess = responseData => {
     $('.user-reservations').show()
   } else {
     $('#no-reservations-indicator').text('You have no reservations yet.').show().fadeOut(2000)
-    $('#show-my-reservations').show()
+    toggleReservations(false)
   }
 }
 

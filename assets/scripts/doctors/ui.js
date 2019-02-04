@@ -1,6 +1,7 @@
 'use strict'
 
 const store = require('../store')
+const toggleReservations = require('../toggleReservations')
 
 const onCreateDoctorInfoSuccess = responseData => {
   store.doctor = responseData.doctor
@@ -8,7 +9,7 @@ const onCreateDoctorInfoSuccess = responseData => {
   $('#doctor-info-message').text('')
   $('#doctor-info-message').text('Thanks, ' + doctorFullName + '! Successfully saved your info.').show().fadeOut(3500)
   $('.reservation-management').show()
-  $('#show-my-reservations').show()
+  toggleReservations(false)
   $('#create-doctor-info').hide()
   $('#create-doctor-info-heading').hide()
   $('#update-existing-doctor-info').show()

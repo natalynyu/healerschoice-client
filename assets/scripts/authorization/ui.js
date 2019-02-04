@@ -3,6 +3,7 @@
 const store = require('../store')
 const doctorApi = require('../doctors/api')
 const parseServerError = require('../parseServerError')
+const toggleReservations = require('../toggleReservations')
 
 // Sign Up UI
 const onSignUpSuccess = responseData => {
@@ -33,7 +34,7 @@ const onSignInSuccess = responseData => {
       }
       store.doctor = responseData.doctor
       $('.reservation-management').show()
-      $('#show-my-reservations').show()
+      toggleReservations(false)
       $('#create-doctor-info-heading').hide()
       $('#create-doctor-info').hide()
       $('#welcome-user-back-message').text(`Welcome back, ${store.doctor.full_name}!`).show()
