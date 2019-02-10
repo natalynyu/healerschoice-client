@@ -16,7 +16,6 @@ const onSignUpFail = (request) => {
 const onSignInSuccess = responseData => {
   store.user = responseData.user
   $('#sign-out').show()
-  $('#change-password-button').show()
   $('#create-doctor-info-heading').show()
   $('#create-doctor-info').show()
   $('#sign-in-heading').hide()
@@ -38,6 +37,8 @@ const onSignInSuccess = responseData => {
       $('#create-doctor-info-heading').hide()
       $('#create-doctor-info').hide()
       $('#welcome-user-back-message').text(`Welcome back, ${store.doctor.full_name}!`).show().fadeOut(15000)
+      $('#change-pw-heading').show()
+      $('#change-password').show()
       $('#update-existing-doctor-info').show()
     })
     .catch(error => {

@@ -9,6 +9,7 @@ const onCreateDoctorInfoSuccess = responseData => {
   $('#doctor-info-message').text('')
   $('#doctor-info-message').text('Thanks, ' + doctorFullName + '! Successfully saved your info.').show().fadeOut(3500)
   $('.reservation-management').show()
+  $('#change-password-button').show()
   toggleReservations(false)
   $('#create-doctor-info').hide()
   $('#create-doctor-info-heading').hide()
