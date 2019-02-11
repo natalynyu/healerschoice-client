@@ -8,7 +8,6 @@ const store = require('../store')
 const onCreateDoctorInfo = event => {
   event.preventDefault()
   const formData = getFormFields(event.target)
-  formData.doctor.user_id = store.user.id
   if (store.doctor) {
     api.updateDoctorInfo(formData)
       .then(ui.onUpdateDoctorInfoSuccess)

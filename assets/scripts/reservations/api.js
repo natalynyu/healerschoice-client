@@ -8,7 +8,6 @@ const userTimeToServer = time => {
 }
 
 const createReservation = (formData) => {
-  formData.reservation.doctor_id = store.doctor.id
   formData.start_time = userTimeToServer(formData.reservation.start_time)
   formData.end_time = userTimeToServer(formData.reservation.end_time)
   return $.ajax({

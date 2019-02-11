@@ -20,8 +20,7 @@ const getDoctorInfo = () => {
     method: 'GET',
     headers: {
       Authorization: 'Token token=' + store.user.token
-    },
-    data: {user_id: store.user.id}
+    }
   })
 }
 
