@@ -2,8 +2,8 @@
 
 const store = require('../store')
 const doctorApi = require('../doctors/api')
+const doctorUi = require('../doctors/ui')
 const parseServerError = require('../parseServerError')
-const toggleReservations = require('../toggleReservations')
 
 // Sign Up UI
 const onSignUpSuccess = responseData => {
@@ -26,21 +26,7 @@ const onSignInSuccess = responseData => {
   $('#signout-message').hide()
   $('#signin-message').text('You have successfully signed in.').show().fadeOut(4000)
   doctorApi.getDoctorInfo()
-    .then(responseData => {
-      if (responseData == null) {
-        $('#doctor-info-message').text('Please provide your information before making a reservation.').show()
-        return
-      }
-      store.doctor = responseData.doctor
-      $('.reservation-management').show()
-      toggleReservations(false)
-      $('#create-doctor-info-heading').hide()
-      $('#create-doctor-info').hide()
-      $('#welcome-user-back-message').text(`Welcome back, ${store.doctor.full_name}!`).show().fadeOut(15000)
-      $('#change-pw-heading').show()
-      $('#change-password').show()
-      $('#update-existing-doctor-info').show()
-    })
+    .then(doctorUi.onGetDoctorInfoSuccess)
     .catch(error => {
       $('#doctor-info-message').text('Error obtaining doctor info: ' + parseServerError(error) + '. Please try again.').show()
     })
