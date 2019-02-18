@@ -1,0 +1,99 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+  <title>Healer's Choice</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+
+  <!-- Do not add `link` tags-->
+  <link rel="shortcut icon" type="image/x-icon" href="favicon.ico">
+
+  <!-- Do not add `script` tags-->
+  <script src="public/vendor.js" type="text/javascript" charset="utf-8" defer></script>
+  <script src="public/application.js" type="text/javascript" charset="utf-8" defer></script>
+</head>
+
+<body>
+  <h1>Healer's Choice</h1>
+  <!-- Sign Up for New Users -->
+  <div class="user-management container-fluid">
+    <h5 id="sign-up-heading">New User Sign Up</h5>
+    <form id="sign-up">
+      <!-- Added autocomplete="off" to prevent Chrome from complaining about -->
+      <input type="email" name="credentials[email]" placeholder="Email" required autocomplete="off">
+      <input type="password" name="credentials[password]" placeholder="Password" required autocomplete="off">
+      <input type="password" name="credentials[password_confirmation]" placeholder="Confirm Password" required autocomplete="off">
+      <input class="btn btn-outline-primary" type="submit">
+    </form>
+    <h5 id="signup-message" class="message"></h5>
+    <!-- Sign In for Existing Users -->
+    <h5 id="sign-in-heading">Sign In</h5>
+    <form id="sign-in">
+      <input type="email" name="credentials[email]" placeholder="Email" required autocomplete="off">
+      <input type="password" name="credentials[password]" placeholder="Password" required autocomplete="off">
+      <input class="btn btn-outline-primary" type="submit">
+    </form>
+    <h5 id="signin-message" class="message"></h5>
+    <h5 id="welcome-user-back-message" class="welcome-back-message"></h5>
+    <!-- Change Password for Existing Users -->
+    <h5 id="change-pw-heading">Change Password</h5>
+    <form id="change-password">
+      <input type="password" name="passwords[old]" placeholder="Current Password" required autocomplete="off">
+      <input type="password" name="passwords[new]" placeholder="New Password" required autocomplete="off">
+      <input class="btn btn-outline-primary" type="submit">
+    </form>
+    <h5 id="password-message" class="message"></h5>
+    <!-- Doctor and Department Info -->
+    <div class="doctor-info">
+      <h5 id="create-doctor-info-heading">Doctor Info</h5>
+      <form id="create-doctor-info">
+        <input type="text" name="doctor[full_name]" placeholder="Full Name" required autocomplete="off">
+        <input type="text" name="doctor[department]" placeholder="Department" required autocomplete="off">
+        <input class="btn btn-outline-primary" type="submit">
+      </form>
+    </div>
+    <h5 id="doctor-info-message" class="message"></h5>
+        <input type="button" id="change-password-button" class="btn btn-outline-primary" value="Update Password">
+    <input type="button" id="update-existing-doctor-info" class="btn btn-outline-primary" value="Update Profile">
+    <!-- Sign out for Signed In Users -->
+    <input type="button" id="sign-out" class="btn btn-outline-primary" value="Sign Out">
+    <h5 id="signout-message" class="message"></h5>
+  </div>
+  <!-- Reservation View & Management Section -->
+  <div class="reservation-management">
+    <h5>My Reservations</h5>
+    <h5 id="show-reservations-message" class="message"></h5>
+    <input type="button" id="show-my-reservations" class="btn btn-outline-primary" name="show-my-reservations" value="Show My Reservations">
+    <input type="button" id="hide-my-reservations" class="btn btn-outline-primary" name="hide-my-reservations" value="Hide My Reservations" style="display: none">
+    <span id="no-reservations-indicator"></span>
+    <table class="user-reservations">
+    </table>
+    <!-- Form for editing reservations -->
+    <h5 id="edit-reservation-heading">Edit Reservation</h5>
+    <div id="edit-form">
+    </div>
+    <h5 id="update-reservation-message" class="message"></h5>
+    <h5 id="delete-reservation-message" class="message"></h5>
+    <h5 class="create-new-reservation">Create a New Reservation</h5>
+    <form id="create-reservation">
+      <select id="machine" name="reservation[machine]" autocomplete="off">
+        <option value="" disabled selected>Machine Name</option>
+        <option value="CT Scanner">CT Scanner</option>
+        <option value="X-Ray Machine">X-Ray Machine</option>
+        <option value="MRI Machine">MRI Machine</option>
+        <option value="PET Scanner">PET Scanner</option>
+        <option value="Ultrasound Machine">Ultrasound Machine</option>
+        <option value="LASIK Surgical Machine">LASIK Surgical Machine</option>
+      </select>
+      <span>From: </span>
+      <input type="datetime-local" name="reservation[start_time]" autocomplete="off">
+      <span>To: </span>
+      <input type="datetime-local" name="reservation[end_time]" autocomplete="off">
+      <input class="btn btn-outline-primary" type="submit">
+    </form>
+    <h5 id="create-reservation-message" class="message"></h5>
+    <h5 id="new-reservation-message"></h5>
+  </div>
+</body>
+
+</html>
