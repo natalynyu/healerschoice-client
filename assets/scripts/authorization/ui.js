@@ -46,7 +46,10 @@ const onChangePasswordFail = () => {
 }
 // Sign Out UI
 const onSignOutSuccess = () => {
-  store.user = null
+  // clear the user's store
+  for (const key of Object.keys(store)) {
+    delete store[key]
+  }
   $('#signout-message').text('You have signed out successfully.').show()
   $('#change-pw-heading').hide()
   $('#change-password').hide()
